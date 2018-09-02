@@ -29,11 +29,14 @@ public class MagicNumber {
 		int[]nums=Integer.toString(number).chars().map(c -> c -'0').toArray();
 		int[] visited=new int[nums.length];
 			
-		if(noDup(nums) &&(((nums[nums.length-1]+ (nums.length -1))%(nums.length))==0)){
+		if(noDup(nums)){
 			
-			for(int i=0;i<nums.length;i++)
+			int index=0;
+			
+			for(int count=0;count<nums.length;count++)
 			{
-				visited[(i+nums[i])%nums.length]=1;		
+				index=(index+nums[index])%nums.length;
+				visited[index]=1;	
 			}
 			for(int i:visited){
 				if(i==0){
